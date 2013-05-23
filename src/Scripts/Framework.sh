@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Define these to suit your nefarious purposes
-if [ "${PROJECT}" == "AWSiOSSDK" ];
+if [ "${PROJECT}" == "AWSOSXSDK" ];
 then
 	FRAMEWORK_NAME="${PROJECT}"
 else
@@ -33,8 +33,7 @@ then
 	echo "Cleaning Completed"
 	exit 0
 else
-	xcodebuild -configuration Release -project "${PROJECT}.xcodeproj" -target "${PROJECT}" -sdk iphoneos
-	xcodebuild -configuration Release -project "${PROJECT}.xcodeproj" -target "${PROJECT}" -sdk iphonesimulator
+	xcodebuild -configuration Release -project "${PROJECT}.xcodeproj" -target "${PROJECT}" -sdk macosx10.8
 
 
 	# This is the full name of the framework we'll
@@ -57,29 +56,14 @@ else
 	ln -s Versions/Current/Resources $FRAMEWORK_DIR/Resources
 	ln -s Versions/Current/$FRAMEWORK_NAME $FRAMEWORK_DIR/$FRAMEWORK_NAME
 
-
-	# Check that this is what your static libraries
-	# are called
-	FRAMEWORK_INPUT_ARM_FILES="build/$BUILD_TYPE-iphoneos/lib${PROJECT}.a"
-	FRAMEWORK_INPUT_I386_FILES="build/$BUILD_TYPE-iphonesimulator/lib${PROJECT}.a"
-
-
-	# The trick for creating a fully usable library is
-	# to use lipo to glue the different library
-	# versions together into one file. When an
-	# application is linked to this library, the
-	# linker will extract the appropriate platform
-	# version and use that.
-	# The library file is given the same name as the
-	# framework with no .a extension.
 	echo "Framework: Creating library..."
-	lipo -create "$FRAMEWORK_INPUT_ARM_FILES" "$FRAMEWORK_INPUT_I386_FILES" -o "$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK_NAME"
+    cp "build/$BUILD_TYPE/lib${PROJECT}.a" "$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK_NAME"
 
 
 	# Now copy the final assets over: your library
 	# header files and the plist file
 	echo "Framework: Copying assets into current version..."
-	if [ "${PROJECT}" == "AWSiOSSDK" ];
+	if [ "${PROJECT}" == "AWSOSXSDK" ];
 	then
 		cp -a include/* $FRAMEWORK_DIR/Headers/
 		cp -a ThirdParty/JSON/*.h $FRAMEWORK_DIR/Headers/

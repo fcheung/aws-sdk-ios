@@ -56,16 +56,16 @@
 @property (nonatomic, retain) S3Owner *initiator;
 
 /** The part number after which listing begins. */
-@property (nonatomic) int partNumberMarker;
+@property (nonatomic) NSInteger partNumberMarker;
 
 /** When a list is truncated, specifies the last part that should be skipped
  * over to resume listing. Use this value for the partNumberMarker
  * request property in a subsequent request.
  */
-@property (nonatomic) int nextPartNumberMarker;
+@property (nonatomic) NSInteger nextPartNumberMarker;
 
 /** The maxParts which was supplied in the request. */
-@property (nonatomic) int maxParts;
+@property (nonatomic) NSInteger maxParts;
 
 /** Indicates whether the returned list of parts is truncated. A value true
  * indicates the list was truncated. A list may be truncated if the number of

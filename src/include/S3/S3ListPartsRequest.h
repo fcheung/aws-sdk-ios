@@ -33,10 +33,10 @@
  *
  * The default value is 1000.
  */
-@property (nonatomic) int maxParts;
+@property (nonatomic) NSInteger maxParts;
 
 /** The part after which to start the listing. */
-@property (nonatomic) int partNumberMarker;
+@property (nonatomic) NSInteger partNumberMarker;
 
 /** Initializes the instance with the bucket, key, and uploadId from an S3MultipartUpload instance returned in an S3MultipartUploadResponse. */
 -(id)initWithMultipartUpload:(S3MultipartUpload *)multipartUpload;
