@@ -48,11 +48,11 @@
     NSMutableString *subresource = [NSMutableString stringWithFormat:@"%@=%@", kS3QueryParamUploadId, uploadId];
 
     if (maxParts != 1000) {
-        [subresource appendFormat:@"&%@=%d", kS3QueryParamMaxParts, maxParts];
+        [subresource appendFormat:@"&%@=%ld", kS3QueryParamMaxParts, (long)maxParts];
     }
 
     if (partNumberMarker != 0) {
-        [subresource appendFormat:@"&%@=%d", kS3QueryParamPartNumberMarker, partNumberMarker];
+        [subresource appendFormat:@"&%@=%ld", kS3QueryParamPartNumberMarker, (long)partNumberMarker];
     }
 
     self.subResource = [NSString stringWithString:subresource];
