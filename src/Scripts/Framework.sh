@@ -101,7 +101,7 @@ else
 
 	# Copy Framework to 'sample project' accessible location
 	echo "Copying framework to samples accessible location"
-    #rm -rf build/../../$FRAMEWORK_NAME.framework
+    rm -rf build/../../$FRAMEWORK_NAME.framework
 	cp -a $FRAMEWORK_BUILD_PATH/$FRAMEWORK_NAME.framework build/../../$FRAMEWORK_NAME.framework
 
 	# run checks against the completed Framework
