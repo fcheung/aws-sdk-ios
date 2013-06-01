@@ -96,7 +96,6 @@ else
 	# prune out non-public files
 	Scripts/PrunePrivateHeaders.sh $FRAMEWORK_DIR/Headers/
 	cp -a Resources/Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
-	( cd $FRAMEWORK_DIR; rm -rf `find . -name ".svn"` )
 
 
 	# Copy Framework to 'sample project' accessible location
@@ -106,7 +105,7 @@ else
 
 	# run checks against the completed Framework
 	# failing this will stop the build
-#	if [ -x "Scripts/checkfiles.sh" ]; then
-#		Scripts/checkfiles.sh
-#	fi
+	if [ -x "Scripts/checkfiles.sh" ]; then
+		Scripts/checkfiles.sh
+	fi
 fi

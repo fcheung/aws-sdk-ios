@@ -24,7 +24,7 @@
 #import "AmazonClientException.h"
 #import "AmazonServiceException.h"
 
-#define AWS_SDK_VERSION              @"1.5.0"
+#define AWS_SDK_VERSION              @"1.6.0"
 #define kISO8061DateFormat           @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 #define kISO8601DateFormat           @"yyyy-MM-dd'T'HH:mm:ss'Z'"
 #define kRFC822DateFormat            @"EEE, dd MMM yyyy HH:mm:ss z"
